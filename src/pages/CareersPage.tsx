@@ -50,13 +50,66 @@ export default function CareersPage() {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
+const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
+
+const [formData, setFormData] = useState({
+  fullName: "",
+  email: "",
+  phone: "",
+  experience: "",
+  position: "",
+  coverNote: "",
+});
   const fileRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFileName(e.target.files[0].name);
+  if (e.target.files && e.target.files[0]) {
+    setFileName(e.target.files[0].name);
+    setResumeFile(e.target.files[0]);
+  }
+};
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  setLoading(true);
+
+  try {
+
+    const form = new FormData();
+
+    form.append("fullName", formData.fullName);
+    form.append("email", formData.email);
+    form.append("phone", formData.phone);
+    form.append("experience", formData.experience);
+    form.append("position", formData.position);
+    form.append("coverNote", formData.coverNote);
+
+    if (resumeFile) {
+      form.append("resume", resumeFile);
     }
-  };
+
+    const response = await fetch(
+      "http://localhost:3001/api/careers",
+      {
+        method: "POST",
+        body: form,
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+      setSubmitted(true);
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Failed to submit application");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-white text-foreground font-sans">
@@ -215,15 +268,22 @@ export default function CareersPage() {
             </div>
           ) : (
             <form
-              className="space-y-5"
-              onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
-            >
+  className="space-y-5"
+  onSubmit={handleSubmit}
+>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Full Name *</label>
                   <input
                     type="text"
                     required
+                    value={formData.fullName}
+onChange={(e) =>
+  setFormData({
+    ...formData,
+    fullName: e.target.value,
+  })
+}
                     className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
                     placeholder="Your full name"
                   />
@@ -233,6 +293,13 @@ export default function CareersPage() {
                   <input
                     type="email"
                     required
+                    value={formData.email}
+onChange={(e) =>
+  setFormData({
+    ...formData,
+    email: e.target.value,
+  })
+}
                     className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
                     placeholder="you@email.com"
                   />
@@ -244,14 +311,29 @@ export default function CareersPage() {
                   <input
                     type="tel"
                     required
+                    value={formData.phone}
+onChange={(e) =>
+  setFormData({
+    ...formData,
+    phone: e.target.value,
+  })
+}
                     className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
                     placeholder="+91 00000 00000"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Years of Experience</label>
-                  <select className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white">
-                    <option value="">Select range</option>
+                  <select className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white"
+                  value={formData.experience}
+onChange={(e) =>
+  setFormData({
+    ...formData,
+    experience: e.target.value,
+  })
+}
+                  >
+                    <option value="" >Select range</option>
                     <option>0–1 years (Fresher)</option>
                     <option>1–3 years</option>
                     <option>3–6 years</option>
@@ -264,6 +346,13 @@ export default function CareersPage() {
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Position Applying For *</label>
                 <select
                   required
+                  value={formData.position}
+onChange={(e) =>
+  setFormData({
+    ...formData,
+    position: e.target.value,
+  })
+}
                   className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white"
                 >
                   <option value="">Select a position</option>
@@ -276,10 +365,17 @@ export default function CareersPage() {
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Cover Note</label>
                 <textarea
-                  rows={4}
-                  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all resize-none bg-white placeholder:text-gray-300"
-                  placeholder="Tell us about yourself, your experience, and why you want to work at Vegith..."
-                />
+  rows={4}
+  value={formData.coverNote}
+  onChange={(e) =>
+    setFormData({
+      ...formData,
+      coverNote: e.target.value,
+    })
+  }
+  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all resize-none bg-white placeholder:text-gray-300"
+  placeholder="Tell us about yourself, your experience, and why you want to work at Vegith..."
+/>
               </div>
 
               {/* Resume upload */}
@@ -317,8 +413,9 @@ export default function CareersPage() {
                 style={{ backgroundColor: "#0a1628" }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#1a2d4a")}
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#0a1628")}
+                disabled={loading}
               >
-                Submit Application
+                {loading ? "Submitting..." : "Submit Application"}
               </button>
             </form>
           )}

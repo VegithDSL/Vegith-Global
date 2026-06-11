@@ -182,7 +182,7 @@ export function Hero() {
       {/* ── STATS BAR — anchored at bottom ── */}
       <div
         className="relative z-10 w-full"
-        style={{ background: "rgba(10,22,40,0.88)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.07)" }}
+        style={{ background: "rgba(0, 1, 34, 0.88)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.07)" }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">

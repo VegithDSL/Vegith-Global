@@ -59,7 +59,7 @@ export default function AboutPage() {
                 Together, Vegith Global, MLPL, and Vegith HR form a reliable ecosystem designed to support the evolving needs of modern enterprises.
               </p>
               <div className="grid grid-cols-2 gap-3">
-                {[{ v: "2018", l: "Founded" }, { v: "250+", l: "Owned Vehicles" }, { v: "100+", l: "Cities Connected" }, { v: "3", l: "Group Companies" }].map((s) => (
+                {[{ v: "2018", l: "Founded" }, { v: "300+", l: "Owned Vehicles" }, { v: "100+", l: "Cities Connected" }, { v: "3", l: "Group Companies" }].map((s) => (
                   <div key={s.l} className="p-4 rounded-xl bg-gray-50 border border-gray-100">
                     <div className="text-xl font-black text-primary">{s.v}</div>
                     <div className="text-xs text-gray-500 mt-0.5">{s.l}</div>

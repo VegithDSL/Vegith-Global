@@ -16,7 +16,7 @@ export function OwnedFleet() {
           >
             <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">MLPL Fleet Division</p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628] leading-tight mb-5">
-              250+ Owned Vehicles.<br />Guaranteed Capacity.
+              300+ Owned Vehicles.<br />Guaranteed Capacity.
             </h2>
             <p className="text-gray-600 text-sm leading-relaxed mb-8">
               Through our dedicated asset division MLPL, we operate one of India's most reliable owned fleets — giving you guaranteed vehicle placement when it matters most. No dependency on market availability. No excuses on peak days.
@@ -80,7 +80,7 @@ export function OwnedFleet() {
             {/* Stats overlay */}
             <div className="absolute bottom-5 left-5 right-5 grid grid-cols-3 gap-3">
               {[
-                { v: "250+", l: "Owned Vehicles" },
+                { v: "300+", l: "Owned Vehicles" },
                 { v: "500+", l: "Vendor Partners" },
                 { v: "100+", l: "Cities" },
               ].map((s) => (

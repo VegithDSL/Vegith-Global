@@ -41,7 +41,7 @@ const groupCompanies = [
     accent: "#c51a20",
     icon: Truck,
     stats: [
-      { v: "250+", l: "Owned Vehicles" },
+      { v: "300+", l: "Owned Vehicles" },
       { v: "Pan-India", l: "Coverage" },
       { v: "GPS", l: "Monitored Fleet" },
       { v: "100%", l: "Owned & Operated" },

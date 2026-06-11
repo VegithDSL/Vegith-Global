@@ -72,5 +72,16 @@
     "vite": "^6.0.5",
     "wouter": "^3.3.5",
     "zod": "^3.24.1"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^5.2.3",
+    "@emailjs/browser": "^4.4.1",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "isomorphic-fetch": "^3.0.0",
+    "multer": "^2.1.1",
+    "nodemailer": "^8.0.10"
   }
 }

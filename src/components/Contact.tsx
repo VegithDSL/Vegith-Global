@@ -5,6 +5,39 @@ import { useState } from "react";
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
+const [formData, setFormData] = useState({
+  name: "",
+  company: "",
+  email: "",
+  phone: "",
+  service: "",
+  message: "",
+});
+const handleSubmit = async (e: any) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch(
+      "http://localhost:3001/api/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+      setSubmitted(true);
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Failed to send enquiry");
+  }
+};
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -37,7 +70,7 @@ export function Contact() {
             className="lg:col-span-2"
           >
             <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Get in Touch</p>
-            <h3 className="text-2xl font-bold text-[#0a1628] mb-5">Let's Talk Operations.</h3>
+            <h3 className="text-2xl font-bold text-[#0a1628] mb-5">TEST CONTACT FORM 123.</h3>
             <p className="text-sm text-gray-500 leading-relaxed mb-8">
               Whether you need fleet capacity, a control tower solution, or an end-to-end logistics partner, we are ready to help.
             </p>
@@ -83,28 +116,42 @@ export function Contact() {
                 <p className="text-sm text-gray-500">Our team will get back to you within 24 hours.</p>
               </div>
             ) : (
-              <form
-                className="space-y-4"
-                onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
-              >
+                 <form
+                   className="space-y-4"
+                   onSubmit={handleSubmit}
+                 >
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Full Name *</label>
                     <input
-                      type="text"
-                      required
-                      data-testid="input-name"
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
-                      placeholder="Your name"
-                    />
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        name: e.target.value,
+                      })
+                    }
+                    data-testid="input-name"
+                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
+                    placeholder="Your name"
+                  />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Company</label>
                     <input
-                      type="text"
-                      data-testid="input-company"
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
-                      placeholder="Your company"
+                     type="text"
+                     value={formData.company}
+                     onChange={(e) =>
+                       setFormData({
+                         ...formData,
+                         company: e.target.value,
+                       })
+                     }
+                     data-testid="input-company"
+                     className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
+                     placeholder="Your company"
                     />
                   </div>
                 </div>
@@ -112,41 +159,69 @@ export function Contact() {
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Email *</label>
                     <input
-                      type="email"
-                      required
-                      data-testid="input-email"
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
-                      placeholder="you@company.com"
-                    />
+                       type="email"
+                       required
+                       value={formData.email}
+                       onChange={(e) =>
+                         setFormData({
+                           ...formData,
+                           email: e.target.value,
+                         })
+                       }
+                       data-testid="input-email"
+                       className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
+                       placeholder="you@company.com"
+                     />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Phone</label>
                     <input
-                      type="tel"
-                      data-testid="input-phone"
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
-                      placeholder="+91 00000 00000"
-                    />
+                       type="tel"
+                       value={formData.phone}
+                       onChange={(e) =>
+                         setFormData({
+                           ...formData,
+                           phone: e.target.value,
+                         })
+                       }
+                       data-testid="input-phone"
+                       className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
+                       placeholder="+91 00000 00000"
+                     />
                   </div>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Service of Interest</label>
-                  <select
-                    data-testid="select-service"
-                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white"
-                  >
-                    <option value="">Select a service</option>
-                    <option>Fleet Management</option>
-                    <option>Distribution Management</option>
-                    <option>Control Tower & Monitoring</option>
-                    <option>Value Added Services</option>
-                    <option>End-to-End Partnership</option>
-                  </select>
+                 <select
+                   value={formData.service}
+                   onChange={(e) =>
+                     setFormData({
+                       ...formData,
+                       service: e.target.value,
+                     })
+                   }
+                   data-testid="select-service"
+                   className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white"
+                 >
+                   <option value="">Select a service</option>
+                   <option>Fleet Management</option>
+                   <option>Distribution Management</option>
+                   <option>Control Tower & Monitoring</option>
+                   <option>Value Added Services</option>
+                   <option>End-to-End Partnership</option>
+                 </select>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Message</label>
                   <textarea
                     rows={4}
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        message: e.target.value,
+                      })
+                    }
                     data-testid="textarea-message"
                     className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all resize-none bg-white placeholder:text-gray-300"
                     placeholder="Tell us about your operations and requirements..."

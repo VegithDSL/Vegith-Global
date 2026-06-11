@@ -43,8 +43,51 @@ const offices = [
 ];
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [activeOffice, setActiveOffice] = useState(0);
+const [submitted, setSubmitted] = useState(false);
+const [activeOffice, setActiveOffice] = useState(0);
+const [loading, setLoading] = useState(false);
+
+const [formData, setFormData] = useState({
+  name: "",
+  company: "",
+  email: "",
+  phone: "",
+  service: "",
+  office: "",
+  message: "",
+});
+
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  setLoading(true);
+
+  try {
+    const response = await fetch(
+      "http://localhost:3001/api/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      alert("Failed to send enquiry");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Failed to send enquiry");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-white text-foreground font-sans">
@@ -163,51 +206,72 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form
-                  className="space-y-4"
-                  onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+  className="space-y-4"
+  onSubmit={handleSubmit}
                 >
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Full Name *</label>
                       <input
-                        type="text"
-                        required
-                        className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
-                        placeholder="Your name"
+  type="text"
+  required
+  value={formData.name}
+  onChange={(e) =>
+    setFormData({ ...formData, name: e.target.value })
+  }
+  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
+  placeholder="Your name"
                       />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Company</label>
                       <input
-                        type="text"
-                        className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
-                        placeholder="Your company"
-                      />
+  type="text"
+  value={formData.company}
+  onChange={(e) =>
+    setFormData({ ...formData, company: e.target.value })
+  }
+  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
+  placeholder="Your company"
+/>
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Email *</label>
                       <input
-                        type="email"
-                        required
-                        className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
-                        placeholder="you@company.com"
-                      />
+  type="email"
+  required
+  value={formData.email}
+  onChange={(e) =>
+    setFormData({ ...formData, email: e.target.value })
+  }
+  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
+  placeholder="you@company.com"
+/>
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Phone</label>
                       <input
-                        type="tel"
-                        className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
-                        placeholder="+91 00000 00000"
-                      />
+  type="tel"
+  value={formData.phone}
+  onChange={(e) =>
+    setFormData({ ...formData, phone: e.target.value })
+  }
+  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white placeholder:text-gray-300"
+  placeholder="+91 00000 00000"
+/>
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Service of Interest</label>
-                    <select className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white">
-                      <option value="">Select a service</option>
+                   <select
+  value={formData.service}
+  onChange={(e) =>
+    setFormData({ ...formData, service: e.target.value })
+  }
+  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white"
+>
                       <option>Fleet Management</option>
                       <option>Distribution Management</option>
                       <option>Control Tower & Monitoring</option>
@@ -218,7 +282,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Office</label>
-                    <select className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white">
+                   <select
+  value={formData.office}
+  onChange={(e) =>
+    setFormData({ ...formData, office: e.target.value })
+  }
+  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all bg-white"
+>
                       <option value="">Select preferred office</option>
                       {offices.map((o) => <option key={o.city}>{o.city}</option>)}
                     </select>
@@ -226,11 +296,15 @@ export default function ContactPage() {
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Message *</label>
                     <textarea
-                      rows={5}
-                      required
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all resize-none bg-white placeholder:text-gray-300"
-                      placeholder="Tell us about your operations, volumes, routes, and how we can support your business..."
-                    />
+  rows={5}
+  required
+  value={formData.message}
+  onChange={(e) =>
+    setFormData({ ...formData, message: e.target.value })
+  }
+  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-[#0a1628] focus:ring-1 focus:ring-[#0a1628]/20 transition-all resize-none bg-white placeholder:text-gray-300"
+  placeholder="Tell us about your operations, volumes, routes, and how we can support your business..."
+/>
                   </div>
                   <button
                     type="submit"
@@ -238,8 +312,9 @@ export default function ContactPage() {
                     style={{ backgroundColor: "#0a1628" }}
                     onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#1a2d4a")}
                     onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#0a1628")}
+                    disabled={loading}
                   >
-                    Send Enquiry <ArrowRight className="w-4 h-4" />
+                    {loading ? "Sending..." : "Send Enquiry"} <ArrowRight className="w-4 h-4" />
                   </button>
                 </form>
               )}
