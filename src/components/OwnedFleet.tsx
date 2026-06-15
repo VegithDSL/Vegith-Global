@@ -50,7 +50,7 @@ export function OwnedFleet() {
             
             <Link href="/contact"
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-sm transition-colors"
-                  style={{ backgroundColor: "#0a1628" }}
+                  style={{ backgroundColor: "#001027" }}
                   onMouseEnter={(e) =>
                   (e.currentTarget.style.backgroundColor = "#1a2d4a")
                 }
