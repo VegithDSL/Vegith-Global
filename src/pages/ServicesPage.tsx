@@ -24,11 +24,11 @@ const services = [
       { title: "Reverse Logistics", desc: "Systematic pickup coordination, return-load optimization, and documentation control." },
     ],
     whyUs: [
-      "Predictable TAT and better route discipline",
-      "Trained drivers following standardized SOPs",
-      "Control-tower support for every dispatch",
-      "Verified vendor onboarding for quality assurance",
-      "End-to-end documentation and safety compliance",
+      // "Predictable TAT and better route discipline",
+      // "Trained drivers following standardized SOPs",
+      // "Control-tower support for every dispatch",
+      // "Verified vendor onboarding for quality assurance",
+      // "End-to-end documentation and safety compliance",
     ],
   },
   {
@@ -238,7 +238,7 @@ useEffect(() => {
                     ))}
                   </div>
 
-                  <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
+                  {/* <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
                     <h3 className="text-sm font-bold text-[#0a1628] uppercase tracking-widest mb-4">Why Choose This Service</h3>
                     <ul className="space-y-2.5">
                       {service.whyUs.map((w) => (
@@ -248,7 +248,7 @@ useEffect(() => {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
