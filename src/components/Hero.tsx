@@ -42,14 +42,14 @@ export function Hero() {
       </div>
 
       {/* ── MUTE TOGGLE ── */}
-      <button
+      {/* <button
         onClick={toggleMute}
         title={muted ? "Unmute" : "Mute"}
         className="absolute top-20 right-6 z-30 w-9 h-9 rounded-full flex items-center justify-center border border-white/20 text-white/50 hover:text-white hover:border-white/50 transition-all"
         style={{ backgroundColor: "rgba(10,22,40,0.45)", backdropFilter: "blur(6px)" }}
       >
         {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-      </button>
+      </button> */}
 
       {/* ── HERO CONTENT — fills remaining height, centered vertically ── */}
       <div className="relative z-10 flex-1 flex items-center">
@@ -168,7 +168,7 @@ export function Hero() {
                 <span
                   key={tag}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-xs font-semibold text-white border border-white/15"
-                  style={{ backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(6px)" }}
+                  style={{ backgroundColor: "rgba(206, 74, 74, 0.05)", backdropFilter: "blur(6px)" }}
                 >
                   <span className="w-1 h-1 rounded-full bg-red-400 inline-block" />
                   {tag}
@@ -182,7 +182,7 @@ export function Hero() {
       {/* ── STATS BAR — anchored at bottom ── */}
       <div
         className="relative z-10 w-full"
-        style={{ background: "rgba(0, 1, 34, 0.88)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.07)" }}
+        style={{ background: "rgba(182, 182, 182, 0)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.07)" }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">

@@ -24,7 +24,7 @@ export function WhoWeAre() {
             </div>
             <div
               className="absolute -bottom-5 -right-5 w-44 h-28 rounded-xl flex flex-col items-center justify-center shadow-lg"
-              style={{ backgroundColor: "#0a1628" }}
+              style={{ backgroundColor: "#011027" }}
             >
               <div className="text-3xl font-black text-white">2018</div>
               <div className="text-xs text-white/60 uppercase tracking-widest mt-1">Founded</div>
