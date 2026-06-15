@@ -92,7 +92,7 @@ export default function LeadershipPage() {
       </div> */}
 
       {/* Team Photo Banner */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -116,7 +116,7 @@ export default function LeadershipPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Leadership Values */}
       <section className="py-14" style={{ backgroundColor: "#f5f7fa" }}>
