@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import { ConfidentialClientApplication } from '@azure/msal-node';
@@ -7,6 +7,7 @@ import 'isomorphic-fetch';
 import multer from "multer";
 
 const app = express();
+const result = dotenv.config();
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -14,6 +15,15 @@ const upload = multer({
 
 app.use(cors());
 app.use(express.json());
+
+// ADD THESE 5 LINES HERE
+console.log("Dotenv Result:", result);
+console.log("Current Directory:", process.cwd());
+console.log({
+  tenant: process.env.TENANT_ID,
+  client: process.env.CLIENT_ID,
+  secretLoaded: !!process.env.CLIENT_SECRET,
+});
 
 const cca = new ConfidentialClientApplication({
   auth: {
@@ -24,7 +34,7 @@ const cca = new ConfidentialClientApplication({
 });
 
 app.post('/api/contact', async (req, res) => {
-      console.log("FORM RECEIVED");
+  console.log("FORM RECEIVED");
   console.log(req.body);
   try {
 
