@@ -92,7 +92,7 @@ export default function LeadershipPage() {
       </div> */}
 
       {/* Team Photo Banner */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -116,35 +116,10 @@ export default function LeadershipPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Leadership Values */}
-      <section className="py-14" style={{ backgroundColor: "#f5f7fa" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-10">
-            <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">What Drives Us</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0a1628]">Leadership Values</h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-            {values.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-white rounded-xl border border-gray-100 p-6 text-center shadow-sm"
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#0a1628] flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-black text-sm">{v.title[0]}</span>
-                </div>
-                <h3 className="font-bold text-[#0a1628] text-sm mb-2">{v.title}</h3>
-                <p className="text-xs text-gray-400 leading-relaxed">{v.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
+
 
       {/* Individual Leadership Cards */}
       <section className="py-20 bg-white">
@@ -196,6 +171,34 @@ export default function LeadershipPage() {
 
                 {/* Animated bottom border */}
                 <div className="h-0.5 w-0 group-hover:w-full transition-all duration-500" style={{ backgroundColor: member.color }} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+  {/* Leadership Values */}
+            <section className="py-14" style={{ backgroundColor: "#f5f7fa" }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">What Drives Us</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0a1628]">Leadership Values</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {values.map((v, i) => (
+              <motion.div
+                key={v.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="bg-white rounded-xl border border-gray-100 p-6 text-center shadow-sm"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#0a1628] flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-black text-sm">{v.title[0]}</span>
+                </div>
+                <h3 className="font-bold text-[#0a1628] text-sm mb-2">{v.title}</h3>
+                <p className="text-xs text-gray-400 leading-relaxed">{v.desc}</p>
               </motion.div>
             ))}
           </div>
