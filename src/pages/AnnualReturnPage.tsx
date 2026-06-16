@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { PDFDocumentCard } from "@/components/PDFDocumentCard";
-import { financialDocuments } from "@/data/financialData";
+
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer"; 
 
@@ -10,7 +10,7 @@ const annualReturnDocuments = [
     id: 1,
     name: "Annual Return FY 2024-25",
     fy: "2024-25",
-    pdfUrl: "/documents/annual-return-2024-25.pdf",
+    pdfUrl: "/documents/Annual Return_VGSL_2024-25.pdf",
   },
 ];
 
@@ -40,7 +40,7 @@ export default function AnnualReturnPage() {
       <div className="max-w-5xl mx-auto px-6 lg:px-10 py-16">
               <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 md:p-10">
                 <div className="flex flex-col gap-4">
-                  {financialDocuments.map((doc, index) => (
+                  {annualReturnDocuments.map((doc, index) => (
                     <motion.div
                       key={doc.id}
                       initial={{ opacity: 0, y: 10 }}
@@ -55,7 +55,7 @@ export default function AnnualReturnPage() {
                     </motion.div>
                   ))}
                   
-                  {financialDocuments.length === 0 && (
+                  {annualReturnDocuments.length === 0 && (
                     <div className="text-center py-12 text-gray-500">
                       No financial documents available at this time.
                     </div>

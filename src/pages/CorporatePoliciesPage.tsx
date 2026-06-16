@@ -13,10 +13,12 @@ export default function CorporatePoliciesPage() {
     csr: {
       title: "Corporate Social Responsibility Policy",
       docs: corporatePolicies.csr,
+      pdfUrl: "/documents/2026_CSR_Policy_VGSL.pdf",
     },
     nomination: {
       title: "Nomination & Remuneration Policy",
       docs: corporatePolicies.nominationRemuneration,
+       pdfUrl:"/documents/2026_NOMINATION_REMUNERATION_AND_BOARD_DIVERSITY_POLICY_VGSL.pdf",
     },
     posh: {
       title: "Policy on Prevention of Sexual Harassment at Workplace",
@@ -101,14 +103,20 @@ export default function CorporatePoliciesPage() {
             </div>
 
             <div className="space-y-4">
-              {currentPolicy.docs.map((doc) => (
-                <PDFDocumentCard
-                  key={doc.id}
-                  name={doc.name}
-                  pdfUrl={doc.pdfUrl}
-                />
-              ))}
-            </div>
+  {currentPolicy.docs.length > 0 ? (
+    currentPolicy.docs.map((doc) => (
+      <PDFDocumentCard
+        key={doc.id}
+        name={doc.name}
+        pdfUrl={doc.pdfUrl}
+      />
+    ))
+  ) : (
+    <div className="text-center py-12 bg-gray-50 rounded-lg">
+      No documents available.
+    </div>
+  )}
+</div>
           </div>
         </section>
       </motion.main>

@@ -1,11 +1,20 @@
 import { motion } from "framer-motion";
 import { PDFDocumentCard } from "@/components/PDFDocumentCard";
-import { financialDocuments } from "@/data/financialData";
+
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer"; 
 
+export const financialDocuments = [
+  {
+    id: 1,
+    name: "Audit Committee Policy",
+    fy: "2026",
+    pdfUrl: "/documents/2026_Audit Committee_Policy_VGSL.pdf",
+  },
+];
 export function FinancialDataPages() {
  return (
+  
   <>
     <Navbar />
 
