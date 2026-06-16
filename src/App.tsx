@@ -14,6 +14,11 @@ import ServicesPage from "@/pages/ServicesPage";
 import CareersPage from "@/pages/CareersPage";
 import ContactPage from "@/pages/ContactPage";
 
+import FinancialDataPages from "@/pages/FinancialDataPages";
+import AnnualReturnPage from "@/pages/AnnualReturnPage";
+import InvestorEnquiryPage from "@/pages/InvestorEnquiryPage";
+import CorporatePoliciesPage from "@/pages/CorporatePoliciesPage"
+
 const queryClient = new QueryClient();
 
 function AppRouter() {
@@ -34,13 +39,28 @@ function AppRouter() {
       {/* Careers */}
       <Route path="/careers" component={CareersPage} />
 
+      {/* Investor */}
+      <Route
+        path="/pages/FinancialData"
+        component={FinancialDataPages}
+      />
+      <Route
+        path="/investor/annual-return"
+        component={AnnualReturnPage}
+      />
+      <Route
+        path="/investor/enquiry"
+        component={InvestorEnquiryPage}
+      />
+
+      {/* Contact */}
+      <Route
+  path="/corporate/policies"
+  component={CorporatePoliciesPage}
+/>
+
       {/* Contact */}
       <Route path="/contact" component={ContactPage} />
-
-      {/* Scroller */}
-      <WouterRouter>
-            <ScrollToTop /> <AppRouter />
-      </WouterRouter>
 
       {/* 404 */}
       <Route component={NotFound} />
@@ -53,6 +73,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <WouterRouter>
+          <ScrollToTop />
           <AppRouter />
         </WouterRouter>
 

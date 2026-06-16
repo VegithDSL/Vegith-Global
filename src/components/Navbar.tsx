@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FileText, Landmark, PhoneCall, ShieldCheck, Scale, FileWarning } from "lucide-react";
 import {
   Menu,
   X,
@@ -64,6 +65,29 @@ const aboutDropdownItems = [
     href: "/about/group",
   },
 ];
+const investorDropdownItems = [
+  { 
+    id: "financial", 
+    icon: Landmark, 
+    title: "Financial Data", 
+    desc: "Audited statements", 
+    href: "/pages/FinancialData" 
+  },
+  { 
+    id: "annual", 
+    icon: FileText, 
+    title: "Annual Return", 
+    desc: "Yearly return reports", 
+    href: "/investor/annual-return" 
+  },
+  { 
+    id: "enquiry", 
+    icon: PhoneCall, 
+    title: "Investor Enquiry", 
+    desc: "Contact details", 
+    href: "/investor/enquiry" 
+  },
+];
 
 export function Navbar() {
   const [location, navigate] = useLocation();
@@ -79,6 +103,11 @@ export function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+
+  const [investorOpen, setInvestorOpen] = useState(false);
+
+  const [mobileInvestorOpen, setMobileInvestorOpen] = useState(false);
+
 
   useEffect(() => {
     const onScroll = () => {
@@ -296,7 +325,55 @@ export function Navbar() {
           >
             Careers
           </Link>
+
+            {/* Investor Droupdown */}
+            <div className="relative" onMouseEnter={() => setInvestorOpen(true)} onMouseLeave={() => setInvestorOpen(false)}>
+            <button className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition ${
+              location.startsWith("/investor") ? "text-[#0a1628] font-semibold" : "text-gray-600 hover:text-[#0a1628] hover:bg-gray-50"
+            }`}>
+              Investor <ChevronDown className={`w-4 h-4 transition-transform ${investorOpen ? "rotate-180" : ""}`} />
+            </button>
+            <AnimatePresence>
+              {investorOpen && (
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 p-3">
+                  {investorDropdownItems.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <Link key={item.id} href={item.href} className="group flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition">
+                        <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#0a1628] transition">
+                          <Icon className="w-4 h-4 text-gray-500 group-hover:text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm font-semibold text-[#0a1628]">{item.title}</span>
+                            <ArrowRight className="w-3 h-3 text-gray-400 group-hover:translate-x-1 transition" />
+                          </div>
+                          <p className="text-xs text-gray-400 mt-1">{item.desc}</p>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+        {/* Corporate */}
+        <Link
+            href="/corporate/policies"
+            className={`px-4 py-2 text-sm font-medium rounded-md transition ${
+              location === "/careers"
+                ? "text-[#0a1628] font-semibold"
+                : "text-gray-600 hover:text-[#0a1628] hover:bg-gray-50"
+            }`}
+          >
+            Corporate
+          </Link>
+
         </nav>
+
+       
 
         {/* Contact Button */}
         <div className="hidden lg:flex">
@@ -385,6 +462,48 @@ export function Navbar() {
                 className="block py-2 text-sm font-medium text-gray-700"
               >
                 Careers
+              </Link>
+              
+              {/* MobileInvestor */}
+              <div>
+                <button
+                  onClick={() =>
+                    setMobileInvestorOpen(!mobileInvestorOpen)
+                  }
+                  className="flex items-center justify-between w-full py-2 text-sm font-medium text-gray-700"
+                >
+                  Investor
+
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${
+                      mobileInvestorOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {mobileInvestorOpen && (
+                  <div className="ml-4 mt-2 space-y-2">
+                    {investorDropdownItems.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() =>
+                          handleHashNavigation(item.href)
+                        }
+                        className="block text-left text-sm text-gray-600"
+                      >
+                        {item.title}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              
+              <Link
+                href="/careers"
+                className="block py-2 text-sm font-medium text-gray-700"
+              >
+                Corporate
               </Link>
 
               <Link
