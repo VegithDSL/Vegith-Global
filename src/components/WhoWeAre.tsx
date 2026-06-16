@@ -15,9 +15,9 @@ export function WhoWeAre() {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <div className="rounded-xl overflow-hidden aspect-[4/3] shadow-lg">
+            <div className="rounded-xl overflow-hidden  shadow-lg">
               <img
-                src="/images/control-room.png"
+                src="/images/raimond-klavins-PQt1tspvxvw-unsplash.jpg"
                 alt="Vegith Operations"
                 className="w-full h-full object-cover"
               />

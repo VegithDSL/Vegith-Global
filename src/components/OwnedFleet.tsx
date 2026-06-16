@@ -72,7 +72,7 @@ export function OwnedFleet() {
           >
             <div className="rounded-xl overflow-hidden aspect-[4/3] shadow-lg">
               <img
-                src="/images/owned-fleet.png"
+                src="/images/ChatGPT Image Jun 16, 2026, 12_06_51 PM.png"
                 alt="MLPL Owned Fleet"
                 className="w-full h-full object-cover"
               />
