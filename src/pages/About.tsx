@@ -70,7 +70,7 @@ export default function AboutPage() {
 
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <div className="rounded-xl overflow-hidden aspect-[4/3] shadow-lg">
-                <img src="/images/control-room.png" alt="Vegith Operations" className="w-full h-full object-cover" />
+                <img src="/images/ChatGPT Image Jun 16, 2026, 10_45_42 AM.png" alt="Vegith Operations" className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <div className="rounded-xl overflow-hidden aspect-[4/3] shadow-lg">
-                <img src="/images/owned-fleet.png" alt="VGS Operations" className="w-full h-full object-cover" />
+                <img src="/images/VG WEBSITE PHOTO.jpeg" alt="VGS Operations" className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </div>
