@@ -24,7 +24,7 @@ const offices = [
   },
 
   {
-    city: "Bhewandi",
+    city: "Bhiwandi",
     address: `Your Pune Address`,
     phone: "+91 99999 00003",
     email: "Bhewandi@vegithglobal.com",
