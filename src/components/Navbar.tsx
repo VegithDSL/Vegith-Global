@@ -376,14 +376,16 @@ export function Navbar() {
        
 
         {/* Contact Button */}
-        <div className="hidden lg:flex">
+         <div className="hidden lg:flex">
           <Link
             href="/contact"
             className="px-5 py-2.5 text-sm font-semibold text-white rounded-md bg-[#0a1628] hover:bg-[#1a2d4a] transition"
           >
             Contact Us
+            
           </Link>
-        </div>
+        </div> 
+        
 
         {/* Mobile Menu Toggle */}
         <button

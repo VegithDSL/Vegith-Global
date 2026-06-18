@@ -42,7 +42,7 @@ const offices = [
   mapsLink:
     "https://www.google.com/maps?q=19.324917,73.100528"
 },
-
+  
   {
     city: "Bangalore",
     address: `Your Bangalore Address`,
