@@ -10,27 +10,38 @@ const offices = [
     address: `Guru Hargovindji Rd, Chakala, Andheri East, Mumbai, Maharashtra 400093`,
     phone: "+91 99999 00001",
     email: "info@vegithglobal.com",
-    mapUrl:"",
-    mapsLink:"https://maps.app.goo.gl/SqWtsut4h4nDPnoD7",
-  },
+    mapUrl:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2314.856635903877!2d72.85874180014896!3d19.112403953084144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9658f2e49b9%3A0x973c5ea5411ff845!2sVegith%20Global%20-%20Logistic%20Services!5e1!3m2!1sen!2sin!4v1781768503787!5m2!1sen!2sin",
+    mapsLink:
+    "https://www.google.com/maps/place/Vegith+Global+-+Logistic+Services/"
+},
 
   {
     city: "Kolkata",
     address: `Sector 62, Noida, Uttar Pradesh – 201309 India`,
     phone: "+91 99999 00002",
     email: "Kolkata@vegithglobal.com",
-    mapUrl:"https://www.google.com/maps/embed?pb=YOUR_DELHI_EMBED_URL",
-    mapsLink:"https://maps.google.com/?q=Sector+62+Noida",
+     mapUrl:
+    "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1863.8479295867162!2d88.34753856897609!3d22.575042716316354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDM0JzMxLjkiTiA4OMKwMjAnNTIuMSJF!5e1!3m2!1sen!2sin!4v1781768311432!5m2!1sen!2sin",
+     mapsLink:
+    "https://www.google.com/maps?q=22.575042,88.347539"
   },
 
   {
-    city: "Bhewandi",
-    address: `Your Pune Address`,
-    phone: "+91 99999 00003",
-    email: "Bhewandi@vegithglobal.com",
-    mapUrl:"https://www.google.com/maps/embed?pb=YOUR_PUNE_EMBED_URL",
-    mapsLink:"https://maps.google.com/?q=Pune",
-  },
+  city: "Bhiwandi",
+
+  address: "Bhiwandi, Maharashtra, India",
+
+  phone: "+91 99999 00003",
+
+  email: "bhiwandi@vegithglobal.com",
+
+  mapUrl:
+    "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d471.6681668785324!2d73.10024525236173!3d19.324976083297912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDE5JzI5LjciTiA3M8KwMDYnMDEuOSJF!5e1!3m2!1sen!2sin!4v1781767300869!5m2!1sen!2sin",
+
+  mapsLink:
+    "https://www.google.com/maps?q=19.324917,73.100528"
+},
 
   {
     city: "Bangalore",
