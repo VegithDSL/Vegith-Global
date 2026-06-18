@@ -9,6 +9,7 @@ import { OwnedFleet } from "@/components/OwnedFleet";
 import { Industries } from "@/components/Industries";
 import { Testimonials } from "@/components/Testimonials";
 import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <Testimonials />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

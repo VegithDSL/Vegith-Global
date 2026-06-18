@@ -14,7 +14,7 @@ const services = [
     tagline: "Delivering Reliability Through a Hybrid Fleet Model",
     intro: "Vegith combines MLPL's reliable owned fleet with an extensive vendor-fleet network to offer predictable capacity, strong compliance, and route discipline. Whether you need long-haul FTL movements, multi-point pickups, or specialized routes, our fleet ecosystem ensures consistent performance.",
     color: "#1a4e9b",
-    image: "/images/service-fleet.png",
+    image: "/images/ChatGPT Image Jun 17, 2026, 05_28_37 PM.png",
     subServices: [
       { title: "Full Truck Load (FTL)", desc: "Pan-India FTL coverage with predictable TAT and well-coordinated dispatch." },
       { title: "Hybrid Fleet (Owned + Vendor)", desc: "Owned fleet ensures reliability; vendors provide scalability during peaks. Operational flexibility + control." },
@@ -39,7 +39,7 @@ const services = [
     tagline: "Optimized Movements for High-Volume Enterprise Networks",
     intro: "Vegith supports structured distribution networks with disciplined routing, time-window delivery, and optimized planning. Our distribution services are tailored for FMCG, food processing, manufacturing clusters, e-commerce, and high-frequency delivery networks.",
     color: "#0a1628",
-    image: "/images/service-distribution.png",
+    image: "/images/distribution Image Jun 17, 2026, 05_41_33 PM.png",
     subServices: [
       { title: "Route Planning", desc: "Efficient route design based on traffic, delivery sequence, and TAT targets." },
       { title: "Route Optimization", desc: "AI-enabled or operations-driven optimization to reduce mileage, delays, and cost." },
@@ -62,7 +62,7 @@ const services = [
     tagline: "Visibility, Transparency & Real-Time Control",
     intro: "Our control tower functions as the nerve center of our logistics operations. Every vehicle — owned or vendor — is monitored from placement to final delivery, ensuring clarity, safety, and timely responses.",
     color: "#e31e24",
-    image: "/images/service-tower.png",
+    image: "/images/tracking Image Jun 17, 2026, 05_58_27 PM.png",
     subServices: [
       { title: "Real-Time GPS Tracking", desc: "Live location & movement updates for every trip across the network." },
       { title: "Exception Handling", desc: "Immediate attention to delays, diversions, breakdowns, or route deviations." },
