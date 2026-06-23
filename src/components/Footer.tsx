@@ -1,5 +1,6 @@
 import vgsLogo from "../../public/VGS logo.png";
 import { Link } from "wouter";
+import { FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -21,29 +22,37 @@ export function Footer() {
               Commitment. Dedication. Delivery.
             </p>
 
-            <div className="flex items-center gap-3">
-              {[
-                { label: "LI", href: "#" },
-                { label: "TW", href: "#" },
-                { label: "YT", href: "#" },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white transition-colors"
-                  style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.backgroundColor = "#e31e24")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.backgroundColor =
-                      "rgba(255,255,255,0.08)")
-                  }
-                >
-                  {s.label}
-                </a>
-              ))}
-            </div>
+          <div className="flex items-center gap-3">
+  <a
+    href="https://www.linkedin.com/company/vegith-global-services-limited/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 rounded-lg flex items-center justify-center text-white transition-all duration-300"
+    style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+  >
+    <FaLinkedinIn size={18} />
+  </a>
+
+  <a
+    href="https://www.facebook.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 rounded-lg flex items-center justify-center text-white transition-all duration-300"
+    style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+  >
+    <FaFacebookF size={18} />
+  </a>
+
+  <a
+    href="https://www.instagram.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 rounded-lg flex items-center justify-center text-white transition-all duration-300"
+    style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+  >
+    <FaInstagram size={18} />
+  </a>
+</div>
           </div>
 
           {/* Services */}

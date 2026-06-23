@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PDFDocumentCard } from "@/components/PDFDocumentCard";
 import { corporatePolicies } from "@/data/corporatePolicies";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function CorporatePoliciesPage() {
   const [activeTab, setActiveTab] = useState("csr");
@@ -122,6 +123,7 @@ export default function CorporatePoliciesPage() {
       </motion.main>
 
       <Footer />
+      <WhatsAppButton/>
     </>
   );
 }

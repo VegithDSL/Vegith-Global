@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, Truck, Users, Globe } from "lucide-react";
 import { useEffect } from "react";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const groupCompanies = [
   {
@@ -279,6 +280,7 @@ export default function GroupPage() {
       </section>
 
       <Footer />
+      <WhatsAppButton/>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, Linkedin } from "lucide-react";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const teamMembers = [
   {
@@ -224,6 +225,7 @@ export default function LeadershipPage() {
       </section>
 
       <Footer />
+      <WhatsAppButton/>
     </div>
   );
 }

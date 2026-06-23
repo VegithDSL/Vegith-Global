@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Building2, MapPin, Globe, Phone, Mail, User } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer"; 
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function InvestorEnquiryPage() {
   return (
@@ -117,6 +118,7 @@ export default function InvestorEnquiryPage() {
     </motion.main>
 
       <Footer />
+      <WhatsAppButton/>
   </>
   );
 }

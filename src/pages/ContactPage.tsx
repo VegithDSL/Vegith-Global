@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Mail, Phone, MapPin, Clock, ArrowRight, CheckCircle2 } from "lucide-react";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const offices = [
   {
@@ -18,7 +19,7 @@ const offices = [
 
   {
     city: "Kolkata",
-    address: `Sector 62, Noida, Uttar Pradesh – 201309 India`,
+    address: `Gate No. 2, HMP House, Room No. G01, Fairlie Place, B.B.D. Bag, Kolkata – 700001. `,
     phone: "+91 99999 00002",
     email: "Kolkata@vegithglobal.com",
      mapUrl:
@@ -388,6 +389,7 @@ const [formData, setFormData] = useState({
       </section>
 
       <Footer />
+      <WhatsAppButton/>
     </div>
   );
 }

@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, Target, Eye, Users, Building2, Briefcase } from "lucide-react";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+
 
 const groupCompanyCards = [
   { abbr: "VGS", name: "Vegith Global Services", color: "#0a1628", href: "/about/group" },
@@ -209,6 +211,8 @@ export default function AboutPage() {
       </section>
 
       <Footer />
+
+      <WhatsAppButton/>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { PDFDocumentCard } from "@/components/PDFDocumentCard";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer"; 
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export const financialDocuments = [
   {
@@ -74,6 +75,7 @@ export function FinancialDataPages() {
    </motion.main>
 
     <Footer />
+    <WhatsAppButton/>
   </>
 );
 }

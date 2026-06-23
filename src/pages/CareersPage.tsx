@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, MapPin, Clock, Briefcase, Upload, CheckCircle2 } from "lucide-react";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const openRoles = [
   {
@@ -423,6 +424,8 @@ onChange={(e) =>
       </section>
 
       <Footer />
+
+      <WhatsAppButton/>
     </div>
   );
 }

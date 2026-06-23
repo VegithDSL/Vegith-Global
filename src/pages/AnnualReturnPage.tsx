@@ -3,7 +3,7 @@ import { PDFDocumentCard } from "@/components/PDFDocumentCard";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer"; 
-
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const annualReturnDocuments = [
   {
@@ -66,6 +66,8 @@ export default function AnnualReturnPage() {
     </motion.main>
     
     <Footer />
+
+    <WhatsAppButton/>
     </>
   );
 }

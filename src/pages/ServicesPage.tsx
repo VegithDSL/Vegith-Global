@@ -4,6 +4,7 @@ import { useParams } from "wouter";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, Truck, BarChart3, Radio, Package, CheckCircle2 } from "lucide-react";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const services = [
   {
@@ -273,6 +274,7 @@ useEffect(() => {
       </section>
 
       <Footer />
+      <WhatsAppButton/>
     </div>
   );
 }
