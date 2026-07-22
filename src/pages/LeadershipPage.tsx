@@ -1,54 +1,65 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { color, motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ArrowRight, Linkedin } from "lucide-react";
+import {
+  Crown, GraduationCap, Briefcase, Sparkles, Award, ArrowUpRight,
+  Quote, Mail, ImagePlus, ArrowRight, Linkedin,
+} from "lucide-react";
 
-const teamMembers = [
+// Leadrs_Photo// 
+import kailas_sharama from "@/../../Vegith-Global/public/images/Leader Team/Kailas_Sharma.png";
+import Hemlata_sharama from "@/../../Vegith-Global/public/images/Leader Team/Hemlata_sharma.jpg";
+import Ashish_mishra from "@/../../Vegith-Global/public/images/Leader Team/Ashish_mishra.jpeg";
+import Cs_photo from "@/../../Vegith-Global/public/images/Leader Team/CS _Photo.jpg";
+
+
+
+
+
+const LEADERS = [
   {
-    name: "CA Kailash Sharma",
+    name: "Kailash Sharma",
+    honorific: "",
     role: "Founder & Managing Director",
-    desc: "A Chartered Accountant by training, Kailash founded Vegith in 2018 with a vision to build India's most trusted integrated logistics partner. With deep industry relationships and a sharp operational mindset, he leads the group's strategy, partnerships, and long-term growth.",
-    initial: "K",
-    color: "#0a1628",
-    accent: "#1a4e9b",
-    highlight: "Founded Vegith in 2018",
+    initials: "KS",
+    photo: kailas_sharama,
+    qualification: "Chartered Accountant · ICAI",
+    experience: "25+ Years",
+    focus: ["Finance", "Strategy", "Governance"],
+    bio: "A B.Com graduate and qualified Chartered Accountant from the Institute of Chartered Accountants of India (ICAI). He carries over 25 years of rich experience across financial management, budgeting, taxation, accounts finalization, internal audit and credit control — with deep expertise in managing financial resources and the in-depth operation of businesses.",
+  },
+   {
+    name: "Hemlata Sharma",
+    role: "Executive Director",
+    initials: "HS",
+    photo: Hemlata_sharama,
+    qualification: "B.Sc Biology",
+    experience: "COO · Chilzo",
+    focus: ["Operations", "Social Impact"],
+    bio: "A B.Sc in Biology, entrepreneur and co-founder & COO of Chilzo. She has supported many non-profits — rehabilitating Kashmiri refugees, fighting hunger for underprivileged women and aiding leprosy patients. A trained CPR expert, versed in Vastu and Feng Shui.",
   },
   {
-    name: "Operations Leadership",
-    role: "Head of Operations",
-    desc: "Overseeing daily fleet dispatch, control tower performance, and vendor coordination across all active routes. Responsible for SOP compliance, driver management, and delivery excellence across the pan-India network.",
-    initial: "O",
-    color: "#1a4e9b",
-    accent: "#0a1628",
-    highlight: "Pan-India fleet operations",
+    name: "Ashish Mishra",
+    role: "Chief Financial Officer",
+    initials: "AM",
+    photo:Ashish_mishra,
+    qualification: "CA · ICAI",
+    experience: "10+ Years",
+    focus: ["Finance", "Compliance", "Capital Markets"],
+    bio: "B.Com from the University of Mumbai and a qualified Chartered Accountant (ICAI). Over 10 years across accounts, finance and capital markets with strong acumen in financial management, regulatory compliance and corporate governance. CFO w.e.f. 10th May 2026.",
   },
   {
-    name: "Technology & Analytics",
-    role: "Head of Technology",
-    desc: "Driving Vegith's GPS-enabled fleet monitoring platform, real-time dashboards, and data-driven operations. Ensures every vehicle movement is tracked, documented, and analyzed for continuous improvement.",
-    initial: "T",
-    color: "#e31e24",
-    accent: "#c51a20",
-    highlight: "GPS & analytics platforms",
+    name: "Arvind Mishra",
+    role: "Company Secretary",
+    initials: "AM",
+    photo: Cs_photo,
+    qualification: "ICSI Associate",
+    experience: "3+ Years",
+    focus: ["Secretarial", "Governance"],
+    bio: "An Associate Member of the Institute of Company Secretaries of India (ICSI) with 3+ years in secretarial and corporate matters. He leads corporate governance and secretarial functions. Company Secretary w.e.f. 6th April 2026.",
   },
-  {
-    name: "Business Development",
-    role: "Head of Growth",
-    desc: "Expanding Vegith's enterprise client base across FMCG, manufacturing, e-commerce, and industrial sectors. Builds long-term partnerships rooted in operational trust and sustained performance.",
-    initial: "B",
-    color: "#1a4e9b",
-    accent: "#0a1628",
-    highlight: "Enterprise client expansion",
-  },
-  {
-    name: "Finance & Compliance",
-    role: "Head of Finance",
-    desc: "Overseeing financial planning, accounts, statutory compliance, and audit readiness across all group entities. Ensures robust financial governance aligned with Vegith's growth objectives.",
-    initial: "F",
-    color: "#0a4a3a",
-    accent: "#065f46",
-    highlight: "Group financial governance",
-  },
+ 
 ];
 
 const values = [
@@ -58,7 +69,167 @@ const values = [
   { title: "Collaboration", desc: "Cross-functional teams driving unified results." },
 ];
 
+const stats = [
+  { value: "40+", label: "Years Combined" },
+  { value: "4", label: "Core Leaders" },
+  { value: "PAN", label: "India Presence" },
+  { value: "100%", label: "In-House Team" },
+];
+
+function PortraitSkeleton({ aspect = "aspect-[4/5]", label, initials, photo }) {
+  if (photo) {
+    return (
+      <div className={`relative w-full ${aspect} overflow-hidden rounded-2xl`}>
+        <img src={photo} alt={label} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,22,40,0.75), transparent 55%)" }} />
+      </div>
+    );
+  }
+  return (
+    <div className={`relative w-full ${aspect} overflow-hidden rounded-2xl`} data-testid="photo-placeholder" style={{ backgroundColor: "#081020" }}>
+      <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 70% 20%, rgba(26,78,155,0.55) 0%, transparent 60%)" }} />
+      <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)", backgroundSize: "26px 26px" }} />
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+        <div className="w-24 h-24 rounded-full flex items-center justify-center font-display text-3xl font-extrabold text-white/90 border-2 border-white/15" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
+          {initials}
+        </div>
+        <div className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/35">
+          <ImagePlus className="w-3.5 h-3.5" /> {label}
+        </div>
+      </div>
+      <div className="absolute inset-y-0 -left-1/3 w-1/3 skew-x-12 opacity-0 group-hover:opacity-100" style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)", animation: "sheen 1.4s ease" }} />
+    </div>
+  );
+}
+
+function FounderCard({ leader }) {
+  return (
+    <div
+      data-testid="founder-card"
+      className="relative overflow-hidden rounded-3xl border p-6 md:p-10"
+      style={{
+        borderColor: "rgba(227,30,36,0.22)",
+        // background: "linear-gradient(120deg, rgba(26,78,155,0.30) 0%, rgba(8,17,32,0.96) 55%, rgba(227,30,36,0.14) 100%)",
+        boxShadow: "0 40px 100px -40px rgba(227,30,36,0.22), inset 0 0 0 1px rgba(255,255,255,0.04)",
+      }}
+    >
+      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-30 pointer-events-none" style={{ background: "radial-gradient(closest-side, rgb(253, 5, 13), transparent 70%)" }} />
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full opacity-25 pointer-events-none" style={{ background: "radial-gradient(closest-side, rgba(26,78,155,0.55), transparent 70%)" }} />
+
+      <div className="relative grid md:grid-cols-12 gap-8 md:gap-10 items-center">
+        <div className="md:col-span-5 lg:col-span-4 group">
+          <div className="relative">
+            <PortraitSkeleton label="Founder Portrait" initials={leader.initials} photo={leader.photo} />
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full border" style={{ borderColor: "rgb(255, 255, 255)", background: "#0a1628 ", boxShadow: "0 10px 30px rgba(0,0,0,0.5)" }}>
+              <Crown size={14} style={{ color: "#e31e24" }} />
+              <span className="text-[10px] uppercase tracking-[0.32em] font-bold" style={{ color: "#ffffff" }}>Founder</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="md:col-span-7 lg:col-span-8">
+          <div className="flex items-center gap-2 mb-4">
+            {/* <span className="h-px w-8" style={{ backgroundColor: "#e31e24" }} /> */}
+            <span className="text-[11px] uppercase tracking-[0.32em] font-bold" style={{ color: "#e31e24" }}>Chairman &amp; Founder</span>
+          </div>
+
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight" style={{ color: "#0a1628" }}>
+            {leader.name}
+          </h2>
+
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium text-white/85 border border-white/10" style={{ background: "#031d44" }}>
+              <GraduationCap size={13} style={{ color: "#e31e24" }} /> {leader.qualification}
+            </span>
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium text-white/85 border border-white/10" style={{ background: "#031d44" }}>
+              <Briefcase size={13} style={{ color: "#e31e24" }} /> {leader.experience} Experience
+            </span>
+          </div>
+
+          <div className="relative mt-6 pl-6">
+            <Quote size={18} className="absolute left-0 top-1" style={{ color: "rgba(227,30,36,0.6)" }} />
+            <p className="text-balck/75 text-[15px] leading-relaxed">{leader.bio}</p>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            {leader.focus.map((f) => (
+              <span key={f} className="text-[11px] uppercase tracking-widest text-black px-3 py-1 rounded-full border border-balck">{f}</span>
+            ))}
+          </div>
+
+          <div className="mt-8 flex items-center gap-3">
+              <a href="#" aria-label="LinkedIn" className="inline-flex items-center justify-center rounded-full w-10 h-10 text-black border border-black transition-colors " onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#e31e24")} onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}>
+              <Linkedin size={15} />
+            </a>
+            <a href="#" aria-label="Email" className="inline-flex items-center justify-center rounded-full w-10 h-10 text-black border border-black transition-colors " onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#e31e24")} onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}>
+              <Mail size={15} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LeaderCard({ leader, index, hovered, onHover, onLeave }) {
+  const isActive = hovered === index;
+  return (
+    <div
+      data-testid={`leader-card-${index}`}
+      onMouseEnter={() => onHover(index)}
+      onMouseLeave={onLeave}
+      className={`group relative rounded-3xl border overflow-hidden transition-all duration-500 ${isActive ? "-translate-y-1" : ""}`}
+      style={{
+        borderColor: isActive ? "rgb(227, 30, 37)" : "rgba(255,255,255,0.1)",
+        background: "linear-gradient(160deg, rgba(26,78,155,0.18) 0%, rgba(8,17,32,0.96) 100%)",
+        boxShadow: isActive ? "0 40px 80px -30px rgba(227,30,36,0.22)" : "0 20px 40px -25px rgba(0,0,0,0.6)",
+      }}
+    >
+      <div className="relative">
+        <PortraitSkeleton label={`${leader.name} Photo`} initials={leader.initials} photo={leader.photo} />
+        <div className="absolute top-4 right-4 text-[10px] font-mono text-white/40">0{index + 2}</div>
+        <div className="absolute inset-x-0 bottom-0 p-5">
+          <div className="text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-2" style={{ color: "#e86165" }}>
+            <Sparkles size={11} /> {leader.role}
+          </div>
+          <h3 className="font-display mt-1 text-white text-xl md:text-2xl font-bold leading-tight">{leader.name}</h3>
+        </div>
+      </div>
+
+      <div className="p-5 md:p-6 border-t border-white/5">
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          <span className="inline-flex items-center gap-1.5 text-[11px] text-white/75 px-2.5 py-1 rounded-full border border-white/10 bg-white/[0.03]">
+            <GraduationCap size={11} style={{ color: "#ffffff" }} /> {leader.qualification}
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-[11px] text-white/75 px-2.5 py-1 rounded-full border border-white/10 bg-white/[0.03]">
+            <Briefcase size={11} style={{ color: "#ffffff" }} /> {leader.experience}
+          </span>
+        </div>
+
+        <p className="text-white/65 text-[13px] leading-relaxed">{leader.bio}</p>
+
+        <div className="mt-5 flex items-center justify-between">
+          <div className="flex flex-wrap gap-1.5">
+            {leader.focus.map((f) => (
+              <span key={f} className="text-[10px] uppercase tracking-widest text-white/50 px-2 py-0.5 rounded-full border border-white/10">{f}</span>
+            ))}
+          </div>
+          <a href="#" aria-label={`View ${leader.name}`} className="w-9 h-9 rounded-full flex items-center justify-center border transition-colors" style={{ borderColor: isActive ? "#e31e24" : "rgba(255,255,255,0.1)", color: isActive ? "#e31e24" : "rgba(255,255,255,0.6)", backgroundColor: isActive ? "rgba(227,30,36,0.1)" : "transparent" }}>
+            <ArrowUpRight size={14} />
+          </a>
+        </div>
+      </div>
+
+      <span className={`pointer-events-none absolute -inset-px rounded-3xl transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0"}`} style={{ background: "radial-gradient(60% 40% at 50% 0%, rgba(227,30,36,0.12), transparent 70%)" }} />
+    </div>
+  );
+}
+
 export default function LeadershipPage() {
+  const founder = LEADERS[0];
+  const others = LEADERS.slice(1);
+  const [hovered, setHovered] = useState(null);
+
   return (
     <div className="min-h-screen bg-white text-foreground font-sans">
       <Navbar />
@@ -80,105 +251,46 @@ export default function LeadershipPage() {
         </div>
       </section>
 
-      {/* Breadcrumb */}
-      {/* <div className="border-b border-gray-100 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-3 flex items-center gap-2 text-xs text-gray-400">
-          <a href="/" className="hover:text-gray-600">Home</a>
-          <span>/</span>
-          <a href="/about" className="hover:text-gray-600">About Us</a>
-          <span>/</span>
-          <span className="text-gray-700 font-medium">Leadership Team</span>
-        </div>
-      </div> */}
-
-      {/* Team Photo Banner */}
-      {/* <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="rounded-2xl overflow-hidden shadow-xl relative"
-          >
-            <img
-              src="/images/leadership-team.png"
-              alt="Vegith Global Services Leadership Team"
-              className="w-full h-72 md:h-[420px] object-cover"
-            />
-            <div
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(to top, rgba(10,22,40,0.82) 0%, rgba(10,22,40,0.2) 45%, transparent 100%)" }}
-            />
-            <div className="absolute bottom-0 left-0 right-0 px-8 py-8">
-              <p className="text-white font-bold text-xl md:text-2xl">Vegith Global Services — Leadership Team</p>
-              <p className="text-white/60 text-sm mt-1">Committed. Dedicated. Delivering excellence across India.</p>
-            </div>
-          </motion.div>
-        </div>
-      </section> */}
-
-    
-
-
-      {/* Individual Leadership Cards */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="mb-12">
-            <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">Meet The Team</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628]">The People Behind Vegith</h2>
-            <p className="text-gray-500 text-sm mt-2 max-w-xl">
-              A team with deep expertise in logistics, technology, and enterprise operations — working together to deliver on every commitment.
-            </p>
+      {/* ── FOUNDER ── */}
+      <section className="relative pt-10 md:pt-14 pb-16 md:pb-20">
+        <div className="absolute inset-0 -z-10 opacity-50" style={{ background: "radial-gradient(50% 60% at 90% 20%, rgba(26,78,155,0.25) 0%, transparent 60%)" }} />
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="h-px w-8 text-red-400" style={{ backgroundColor: "#e31e24" }} />
+            <span className="text-[11px] uppercase tracking-[0.32em] font-bold text-red-400" style={{ color: "" }}>Meet Our Founder</span>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                {/* Top color band */}
-                <div className="relative h-36 flex items-center justify-center overflow-hidden" style={{ backgroundColor: member.color }}>
-                  <div
-                    className="absolute inset-0 opacity-40"
-                    style={{ background: `radial-gradient(circle at 70% 30%, ${member.accent}, transparent 65%)` }}
-                  />
-                  <div className="relative w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center text-white text-3xl font-black shadow-inner">
-                    {member.initial}
-                  </div>
-                  {/* Highlight badge */}
-                  <div
-                    className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-white/80 text-[10px] font-semibold whitespace-nowrap"
-                    style={{ backgroundColor: "rgba(255,255,255,0.15)", backdropFilter: "blur(6px)" }}
-                  >
-                    {member.highlight}
-                  </div>
-                </div>
-
-                {/* Card body */}
-                <div className="p-6">
-                  <h3 className="text-base font-bold text-[#0a1628] mb-1">{member.name}</h3>
-                  <p className="text-xs font-semibold uppercase tracking-wider mb-4" style={{ color: member.color }}>
-                    {member.role}
-                  </p>
-                  <p className="text-sm text-gray-500 leading-relaxed">{member.desc}</p>
-                </div>
-
-                {/* Animated bottom border */}
-                <div className="h-0.5 w-0 group-hover:w-full transition-all duration-500" style={{ backgroundColor: member.color }} />
-              </motion.div>
-            ))}
-          </div>
+          <FounderCard leader={founder} />
         </div>
       </section>
 
-  {/* Leadership Values */}
-            <section className="py-14" style={{ backgroundColor: "#f5f7fa" }}>
+      {/* ── EXECUTIVE LEADERS ── */}
+      <section className="relative pb-20 md:pb-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                {/* <span className="h-px w-8" style={{ backgroundColor: "#e31e24" }} /> */}
+                <span className="text-[11px] uppercase tracking-[0.32em] font-bold" style={{ color: "#e31e24" }}>Executive Leadership</span>
+              </div>
+              <h2 className="font-display text-red-400 text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight max-w-2xl tracking-tight" style={{color:"#0a1628"}}>
+                The team shaping every engagement.
+              </h2>
+            </div>
+            <p className="text-white/60 text-sm md:text-base max-w-md">
+              Seasoned leaders across finance, compliance, operations and social impact — each accountable end-to-end.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {others.map((leader, i) => (
+              <LeaderCard key={leader.name} leader={leader} index={i} hovered={hovered} onHover={setHovered} onLeave={() => setHovered(null)} />
+            ))}
+          </div>
+       </div>
+      </section>
+
+      {/* Leadership Values */}
+      <section className="py-14" style={{ backgroundColor: "#f5f7fa" }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">What Drives Us</p>
