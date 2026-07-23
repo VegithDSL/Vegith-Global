@@ -314,18 +314,6 @@ export function Navbar() {
             </AnimatePresence>
           </div>
 
-          {/* Careers */}
-          <Link
-            href="/careers"
-            className={`px-4 py-2 text-sm font-medium rounded-md transition ${
-              location === "/careers"
-                ? "text-[#0a1628] font-semibold"
-                : "text-gray-600 hover:text-[#0a1628] hover:bg-gray-50"
-            }`}
-          >
-            Careers
-          </Link>
-
             {/* Investor Droupdown */}
             <div className="relative" onMouseEnter={() => setInvestorOpen(true)} onMouseLeave={() => setInvestorOpen(false)}>
             <button className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition ${
@@ -370,6 +358,18 @@ export function Navbar() {
           >
             Corporate
           </Link>
+
+                    {/* Careers */}
+          <Link
+            href="/careers"
+            className={`px-4 py-2 text-sm font-medium rounded-md transition ${
+              location === "/careers"
+                ? "text-[#0a1628] font-semibold"
+                : "text-gray-600 hover:text-[#0a1628] hover:bg-gray-50"
+            }`}
+          >
+            Careers
+          </Link> 
 
         </nav>
 

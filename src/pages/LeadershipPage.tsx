@@ -47,7 +47,7 @@ const LEADERS = [
     qualification: "CA · ICAI",
     experience: "10+ Years",
     focus: ["Finance", "Compliance", "Capital Markets"],
-    bio: "B.Com from the University of Mumbai and a qualified Chartered Accountant (ICAI). Over 10 years across accounts, finance and capital markets with strong acumen in financial management, regulatory compliance and corporate governance. CFO w.e.f. 10th May 2026.",
+    bio: "B.Com from the University of Mumbai and a qualified Chartered Accountant (ICAI). Over 10 years across accounts, finance and capital markets with strong acumen in financial management, regulatory compliance and corporate governance.",
   },
   {
     name: "Arvind Mishra",
@@ -57,7 +57,7 @@ const LEADERS = [
     qualification: "ICSI Associate",
     experience: "3+ Years",
     focus: ["Secretarial", "Governance"],
-    bio: "An Associate Member of the Institute of Company Secretaries of India (ICSI) with 3+ years in secretarial and corporate matters. He leads corporate governance and secretarial functions. Company Secretary w.e.f. 6th April 2026.",
+    bio: "An Associate Member of the Institute of Company Secretaries of India (ICSI) with 3+ years in secretarial and corporate matters. He leads corporate governance and secretarial functions.",
   },
  
 ];
@@ -187,7 +187,7 @@ function LeaderCard({ leader, index, hovered, onHover, onLeave }) {
     >
       <div className="relative">
         <PortraitSkeleton label={`${leader.name} Photo`} initials={leader.initials} photo={leader.photo} />
-        <div className="absolute top-4 right-4 text-[10px] font-mono text-white/40">0{index + 2}</div>
+        <div className="absolute top-4 right-4 text-[10px] font-mono text-white/40"></div>
         <div className="absolute inset-x-0 bottom-0 p-5">
           <div className="text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-2" style={{ color: "#e86165" }}>
             <Sparkles size={11} /> {leader.role}
