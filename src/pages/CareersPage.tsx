@@ -91,7 +91,7 @@ const [formData, setFormData] = useState({
     }
 
     const response = await fetch(
-      "http://localhost:3001/api/careers",
+      "https://api.vegithglobal.com/api/contact",
       {
         method: "POST",
         body: form,

@@ -76,7 +76,7 @@ const [formData, setFormData] = useState({
 
   try {
     const response = await fetch(
-      "http://localhost:3001/api/contact",
+      "https://api.vegithglobal.com/api/contact",
       {
         method: "POST",
         headers: {
